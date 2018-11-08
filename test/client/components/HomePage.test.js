@@ -13,6 +13,6 @@ test('Button is disabled when longitude or latitude is empty', () => {
 
   const store = createMockStore(testState);
   const container = shallowWithStore(<HomePage />, store);
-  const wrapper = container.dive().find('.homePageWrapper');
-  expect(wrapper.find(Button).prop('disabled')).toBe(true);
+  const button = container.dive().find(Button);
+  expect(button.prop('disabled')).toBe(true);
 });
