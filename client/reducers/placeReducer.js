@@ -11,6 +11,27 @@ const placeReducer = handleActions(
     [actionTypes.REMOVE_DETAILS]() {
       return initialState;
     },
+    [actionTypes.FETCH_PLACE_DETAILS](state) {
+      return {
+        ...state,
+        loading: true,
+      };
+    },
+    [actionTypes.FETCH_PLACE_DETAILS_SUCCESS](state, action) {
+      return {
+        ...state,
+        loading: false,
+        ...action.payload,
+        error: null,
+      };
+    },
+    [actionTypes.FETCH_PLACE_DETAILS_FAIL](state, action) {
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
+    },
   },
   initialState,
 );

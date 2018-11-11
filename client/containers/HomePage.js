@@ -8,6 +8,10 @@ import Place from 'components/Place/Place';
 import Condition from 'containers/Condition/Condition';
 
 class HomePage extends Component {
+  componentDidMount() {
+    this.props.removeDetails();
+  }
+
   handleOnClick = () => {
     this.props.fetchPlaces(this.props.condition);
   }
@@ -36,12 +40,14 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch =>
   bindActionCreators({
     fetchPlaces: placeActions.fetchPlaces,
+    removeDetails: placeActions.removeDetails,
   }, dispatch);
 
 HomePage.propTypes = {
   condition: PropTypes.object,
   place: PropTypes.object,
   fetchPlaces: PropTypes.func,
+  removeDetails: PropTypes.func,
 };
 export default connect(
   mapStateToProps,

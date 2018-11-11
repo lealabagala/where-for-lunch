@@ -19,3 +19,20 @@ export function removePrice(arr, obj) {
   }
   return arr;
 }
+
+export function getDayOfTheWeek(index) {
+  const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
+  return days[index];
+}
+
+export function getOperatingHours(arr, index) {
+  const hours = arr.find(obj => obj.day === index);
+  const formatHour = (hour) => {
+    return [hour.slice(0, 2), ':', hour.slice(2)].join('');
+  };
+
+  if (hours) {
+    return `${formatHour(hours.start)} - ${formatHour(hours.end)}`;
+  }
+}

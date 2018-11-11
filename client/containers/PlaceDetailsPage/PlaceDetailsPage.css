@@ -1,23 +1,25 @@
 @import 'styles/variables.css';
+@import 'components/Place/Place.css';
 
 .name {
-  margin-top: calc($base-spacing * 10);
-  min-height: 2rem;
-  font-size: 2rem;
-  margin-bottom: calc($base-spacing * 2);
   > a {
     color: white;
   }
 }
-.box {
-  min-height: 10rem;
-  background-color: white;
-  color: $black;
-  background: linear-gradient(to bottom, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%);
-  border-radius: 1rem;
-  padding: calc($base-spacing * 2);
-  > div {
-    margin-bottom: calc($base-spacing / 2);
+
+.placeImage {
+  max-width: 20rem;
+}
+
+.back {
+  float: right;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  .colImage {
+    padding-left: 1rem;
   }
   .rating {
     margin-top: $base-spacing;
@@ -46,5 +48,15 @@
   .emptyStars:before, .fullStars:before {
     content:'\2605\2605\2605\2605\2605';
     font-size: 1rem;
+  }
+  &.photos {
+    flex-wrap: wrap;
+    justify-content: center;
+
+    .photo {
+      padding: 0 0.5rem;
+      margin-bottom: 1rem;
+      flex-grow: 1;
+    }
   }
 }
