@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux';
 import { Link } from 'react-router-dom';
 import placeActions from 'actions/placeActions';
 import { getDayOfTheWeek, getOperatingHours } from 'lib/utils';
+import GoogleMap from 'components/GoogleMap/GoogleMap';
 import styles from './PlaceDetailsPage.css';
 
 class PlaceDetailsPage extends Component {
@@ -57,6 +58,10 @@ class PlaceDetailsPage extends Component {
         <h4>Photos:</h4>
         <div className={`${styles.row} ${styles.photos}`}>
           { place.photos && place.photos.map((photo, i) => <img className={styles.photo} src={photo} key={i} />) }
+        </div>
+        <h4>Google Map:</h4>
+        <div className={styles.row}>
+          { place.coordinates && <GoogleMap latitude={place.coordinates.latitude} longitude={place.coordinates.longitude} /> }
         </div>
       </div>;
     }
