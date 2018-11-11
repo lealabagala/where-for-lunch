@@ -4,18 +4,14 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Button from 'components/Button/Button';
 import placeActions from 'actions/placeActions';
-import conditionActions from 'actions/conditionActions';
 import Place from 'components/Place/Place';
-import Condition from 'components/Condition/Condition';
+import Condition from 'containers/Condition/Condition';
 
 class HomePage extends Component {
   handleOnClick = () => {
     this.props.fetchPlaces(this.props.condition);
   }
 
-  handleOnConditionChange = (value) => {
-    this.props.setRadius(value);
-  }
   render() {
     const { condition, place } = this.props;
     const { latitude, longitude } = condition;
@@ -24,7 +20,7 @@ class HomePage extends Component {
       <div className="homePageWrapper">
         <Place place={place} />
         <div className="searchWrapper">
-          <Condition condition={condition} action={this.handleOnConditionChange}/>
+          <Condition />
           <Button onClick={this.handleOnClick} theme="homepageClick" disabled={disabled}/>
         </div>
       </div>
@@ -40,14 +36,12 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch =>
   bindActionCreators({
     fetchPlaces: placeActions.fetchPlaces,
-    setRadius: conditionActions.setRadius,
   }, dispatch);
 
 HomePage.propTypes = {
   condition: PropTypes.object,
   place: PropTypes.object,
   fetchPlaces: PropTypes.func,
-  setRadius: PropTypes.func,
 };
 export default connect(
   mapStateToProps,
