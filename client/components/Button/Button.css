@@ -13,8 +13,7 @@
     margin-left: calc($base-spacing * 2);
     box-shadow: $button-shadow;
   }
-  &.homepageClick:disabled,
-  &.homepageClick[disabled] {
+  &.homepageClick:disabled {
     background-color: $starGrey;
   }
 }
