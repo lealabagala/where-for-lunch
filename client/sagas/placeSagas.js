@@ -13,8 +13,12 @@ function* fetchPlace(action) {
       price: formatPrice(action.payload.price),
     };
     const places = yield call(getPlaceIds, params);
-    const randomPlace = getRandom(places);
-    yield put(placeActions.setDetails(randomPlace));
+    if (places.length > 0) {
+      const randomPlace = getRandom(places);
+      yield put(placeActions.setDetails(randomPlace));
+    } else {
+      yield put(placeActions.removeDetails());
+    }
   } catch (e) {
     console.log('error! ', e);
   }

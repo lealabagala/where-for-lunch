@@ -8,6 +8,9 @@ const placeReducer = handleActions(
     [actionTypes.SET_DETAILS](state, action) {
       return { ...state, ...action.payload };
     },
+    [actionTypes.REMOVE_DETAILS]() {
+      return initialState;
+    },
   },
   initialState,
 );
