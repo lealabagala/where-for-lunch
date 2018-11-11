@@ -36,4 +36,36 @@ describe('placeReducer', () => {
     expect(reducer(testState, action)).toEqual({});
   });
 
+  test('FETCH_PLACE_DETAILS sets the value of loading to true', () => {
+    const action = {
+      type: actions.FETCH_PLACE_DETAILS,
+    };
+    expect(reducer(testState, action)).toEqual({ loading: true });
+  });
+
+  test('FETCH_PLACE_DETAILS_SUCCESS sets the value of loading to false and the place details from the payload', () => {
+    const action = {
+      type: actions.FETCH_PLACE_DETAILS_SUCCESS,
+      payload: {
+        "id": "tPskOpDT6wDg9ndzlDOKEg",
+        "alias": "bigbys-davao-city",
+        "name": "Bigby's",
+        "image_url": "https://s3-media1.fl.yelpcdn.com/bphoto/Qh-uLo180LqoOyQ-uFE50w/o.jpg",
+        "is_claimed": false,
+        "is_closed": false,
+      }
+    };
+    expect(reducer(testState, action)).toEqual({ loading: false, ...action.payload });
+  });
+
+  test('FETCH_PLACE_DETAILS_FAIL sets the value of loading to false and the error from the payload', () => {
+    const action = {
+      type: actions.FETCH_PLACE_DETAILS_FAIL,
+      payload: {
+        message: 'Error fetching details',
+      }
+    };
+    expect(reducer(testState, action)).toEqual({ loading: false, error: action.payload });
+  });
+
 });

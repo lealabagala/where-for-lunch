@@ -22,8 +22,9 @@ export function removePrice(arr, obj) {
 
 export function getDayOfTheWeek(index) {
   const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-
-  return days[index];
+  if (index >= 0 && index < 7) {
+    return days[index];
+  }
 }
 
 export function getOperatingHours(arr, index) {

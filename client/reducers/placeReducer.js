@@ -22,7 +22,6 @@ const placeReducer = handleActions(
         ...state,
         loading: false,
         ...action.payload,
-        error: null,
       };
     },
     [actionTypes.FETCH_PLACE_DETAILS_FAIL](state, action) {
